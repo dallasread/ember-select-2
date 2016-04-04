@@ -276,7 +276,7 @@ var Select2Component = Ember.Component.extend({
 
       term = Ember.Handlebars.Utils.escapeExpression(term);
 
-      return Ember.String.htmlSafe(Ember.String.fmt(text, term));
+      return Ember.String.htmlSafe(text.replace(/%@/g, term));
     };
 
     /*
@@ -286,7 +286,7 @@ var Select2Component = Ember.Component.extend({
     options.formatAjaxError = function(jqXHR, textStatus, errorThrown) {
       var text = self.get('typeaheadErrorText');
 
-      return Ember.String.htmlSafe(Ember.String.fmt(text, errorThrown));
+      return Ember.String.htmlSafe(text.replace(/%@/g, errorThrown));
     };
 
     /*
